@@ -1,6 +1,6 @@
 import gi
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gtk
+from gi.repository import GLib, Gtk
 
 
 class RegionSelector(Gtk.Window):
@@ -35,7 +35,7 @@ class RegionSelector(Gtk.Window):
         .region-info { background: white; padding: 8px; border-radius: 8px; }
         """
         prov = Gtk.CssProvider()
-        prov.load_from_bytes(css)
+        prov.load_from_bytes(GLib.Bytes.new(css))
         self.get_style_context().add_provider(prov, 1)
 
         evk = Gtk.EventControllerKey()

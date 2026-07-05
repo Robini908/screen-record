@@ -1,7 +1,7 @@
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, GLib
+from gi.repository import GLib, Gtk, Adw
 
 from .helpers import load_config, save_config, is_recording
 from .gui_settings import build_settings_page
@@ -58,7 +58,7 @@ class RecordWindow(Adw.ApplicationWindow):
         .paused-label { font-size: 36px; color: #e66100; }
         """
         prov = Gtk.CssProvider()
-        prov.load_from_bytes(css)
+        prov.load_from_bytes(GLib.Bytes.new(css))
         self.get_style_context().add_provider(prov, 1)
 
     def _navigate_to(self, page_name):

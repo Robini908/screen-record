@@ -75,10 +75,9 @@ def build_settings_page(window):
     encoders = ["libx264", "h264_nvenc", "h264_vaapi", "libx265", "hevc_nvenc"]
     for e in encoders:
         enc_combo.append_text(e)
-    enc_combo.set_active(
-        max(0, [""] + encoders).index(
-            window.config.get("vcodec", ""))
-    )
+    current = window.config.get("vcodec", "")
+    all_encoders = [""] + encoders
+    enc_combo.set_active(all_encoders.index(current) if current in all_encoders else 0)
     enc_combo.connect("changed", lambda c: window.config.update(
         vcodec=c.get_active_text() if c.get_active() > 0 else ""))
     page.add(_make_section("Encoder", enc_combo, "Select video codec"))
@@ -138,8 +137,9 @@ def build_settings_page(window):
                            halign=Gtk.Align.CENTER,
                            css_classes=["suggested-action", "pill"])
     start_btn.set_margin_top(16)
+    start_btn.set_margin_bottom(16)
     start_btn.connect("clicked", lambda b: window._on_start())
-    page.add(start_btn)
+    window.settings_box.append(start_btn)
 
     window.settings_box.append(page)
 
