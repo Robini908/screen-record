@@ -17,4 +17,4 @@ Exec=screencast-recorder --toggle
 
 [Desktop Action stop-recording]
 Name=Stop Recording
-Exec=screencast-recorder --stop
+Exec=screencast-recorder --toggle
