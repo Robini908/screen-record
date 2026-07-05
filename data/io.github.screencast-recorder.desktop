@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=Screen Recorder
+GenericName=Screencast Recorder
+Comment=Record your screen with customizable quality, region, webcam overlay, and audio
+Exec=screencast-recorder-gui
+Icon=io.github.screencast-recorder
+Type=Application
+Categories=AudioVideo;Video;Capture;
+Keywords=record;screencast;screen;capture;video
+Terminal=false
+StartupNotify=true
+Actions=start-recording;stop-recording;
+
+[Desktop Action start-recording]
+Name=Start Recording
+Exec=screencast-recorder --toggle
+
+[Desktop Action stop-recording]
+Name=Stop Recording
+Exec=screencast-recorder --stop

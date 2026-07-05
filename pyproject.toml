@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "screencast-recorder"
+version = "1.0.0"
+description = "High-quality screencast recorder with GTK4 GUI and CLI"
+readme = "README.md"
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.10"
+dependencies = [
+    "PyGObject>=3.42",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications :: GTK",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video :: Capture",
+]
+
+[project.urls]
+Homepage = "https://github.com/abraham/screencast-recorder"
+Repository = "https://github.com/abraham/screencast-recorder"
+
+[project.scripts]
+screencast-recorder = "screencast_recorder.cli:main"
+screencast-recorder-gui = "screencast_recorder.gui:gui_main"
+
+[tool.setuptools.packages.find]
+include = ["screencast_recorder*"]
+
+[tool.setuptools.package-data]
+screencast_recorder = []
